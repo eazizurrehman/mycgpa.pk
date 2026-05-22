@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check",
-    "format": "biome format --write"
+    "ts:check": "bash ./.config/ts:check.sh",
+    "biome:check": "bash ./.config/biome:check.sh",
+    "biome:migrate": "bash ./.config/biome:migrate.sh",
+    "file:size:check": "bash ./.config/file:size:check.sh"
   },
   "dependencies": {
     "next": "16.2.6",
