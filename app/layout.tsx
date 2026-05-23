@@ -38,7 +38,9 @@ export default function RootLayout({
       )}
       lang="en"
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-dvh flex-col">
+        <main className="min-h-dvh">{children}</main>
+      </body>
     </html>
   );
 }
