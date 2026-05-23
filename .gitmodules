@@ -1,3 +1,6 @@
 [submodule ".config"]
 	path = .config
 	url = git@github.com:eazizurrehman/module.config.git
+[submodule "app/_modules/form"]
+	path = app/_modules/form
+	url = git@github.com:eazizurrehman/module.form.git
