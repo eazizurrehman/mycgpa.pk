@@ -10,13 +10,13 @@ const PDFDownloadLink = dynamic(
 import { useForm } from "@tanstack/react-form-nextjs";
 import { Trash2, X } from "lucide-react";
 import { useId } from "react";
+import { cgpaCalculatorFormSchema } from "@/app/_calculator/schema";
+import { TranscriptDocument } from "@/app/_calculator/transcript";
 import {
   calculateCgpa,
   getAllUniversitiesList,
   getGradesForUniversity,
-} from "@/app/_calculator/helper";
-import { cgpaCalculatorFormSchema } from "@/app/_calculator/schema";
-import { TranscriptDocument } from "@/app/_calculator/transcript";
+} from "@/app/_calculator/utils";
 import { AppButton } from "@/app/_components/button";
 import { AppCombobox } from "@/app/_modules/form/combobox";
 import { AppFieldGroup } from "@/app/_modules/form/field-group";
@@ -24,6 +24,7 @@ import { AppInput } from "@/app/_modules/form/input";
 import { AppMultiField } from "@/app/_modules/form/multi-field";
 import { Card, CardContent, CardFooter } from "@/app/_shadcn/card";
 import { Field } from "@/app/_shadcn/field";
+import { getTranscriptTimestamp } from "@/lib/date";
 
 export function CgpaCalculatorForm() {
   const formId = useId();
@@ -203,7 +204,7 @@ export function CgpaCalculatorForm() {
                         university={universityName}
                       />
                     }
-                    fileName={`Transcript - ${universityName.toUpperCase() || "University"} - ${new Date().toLocaleString()}.pdf`}
+                    fileName={`mycgpa.pk - Transcript for ${universityName || "Your University"} at ${getTranscriptTimestamp()}.pdf`}
                   >
                     Download transcript
                   </PDFDownloadLink>

@@ -2,7 +2,7 @@ import * as z from "zod";
 import {
   getAllUniversitiesKeys,
   getGradesForUniversity,
-} from "@/app/_calculator/helper";
+} from "@/app/_calculator/utils";
 
 export const cgpaCalculatorFormSchema = z
   .object({

@@ -1,3 +1,5 @@
+import type { University } from "@/app/_calculator/types";
+
 export const universities = [
   {
     key: "iiui",
@@ -15,8 +17,7 @@ export const universities = [
   },
   {
     key: "comsats",
-    label: "COMSATS University Islamabad (CUI)",
-    campuses: [
+    labels: [
       "COMSATS University Islamabad (CUI), Islamabad Campus",
       "COMSATS University Islamabad (CUI), Lahore Campus",
       "COMSATS University Islamabad (CUI), Abbottabad Campus",
@@ -40,4 +41,4 @@ export const universities = [
       { grade: "F", gradePoints: 0.0 },
     ],
   },
-];
+] satisfies University[];
