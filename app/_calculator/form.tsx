@@ -90,7 +90,7 @@ export function CgpaCalculatorForm() {
                     >
                       {field.state.value.map((course, index) => (
                         <AppFieldGroup
-                          className="flex items-center gap-2"
+                          className="flex gap-2"
                           key={course.id}
                           orientation="horizontal"
                         >
@@ -128,7 +128,6 @@ export function CgpaCalculatorForm() {
                           </form.Field>
                           <AppButton
                             aria-label="Remove course"
-                            className="self-end"
                             disabled={field.state.value.length === 1}
                             onClick={(e) => {
                               e.preventDefault();

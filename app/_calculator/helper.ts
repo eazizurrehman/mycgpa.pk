@@ -11,7 +11,7 @@ export const calculateCgpa = (university: string, courses: Course[]) => {
       const credits = Number(course.credits);
       const gradePoints = universityData.mapping.find(
         (m) => m.grade === course.grade,
-      )?.points;
+      )?.gradePoints;
 
       if (
         !Number.isFinite(credits) ||
