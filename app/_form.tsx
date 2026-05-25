@@ -1,5 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
+const PDFDownloadLink = dynamic(
+  () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),
+  { ssr: false },
+);
+
 import { useForm } from "@tanstack/react-form-nextjs";
 import { Trash2, X } from "lucide-react";
 import { useId } from "react";
@@ -11,6 +18,7 @@ import { AppMultiField } from "@/app/_modules/form/multi-field";
 import { cgpaCalculatorFormSchema } from "@/app/_schema";
 import { Card, CardContent, CardFooter } from "@/app/_shadcn/card";
 import { Field } from "@/app/_shadcn/field";
+import { TranscriptDocument } from "@/app/_transcript";
 
 const GRADE_TO_POINTS: Record<string, number> = {
   A: 4.0,
@@ -177,11 +185,11 @@ export function CgpaCalculatorForm() {
                 <div className="flex items-center justify-center gap-5">
                   <div className="flex size-22 flex-col items-center justify-center rounded-full border-4 p-5">
                     <p className="font-bold">Credits</p>
-                    <p className="font-bold">{credits}</p>
+                    <p className="font-bold">{credits.toFixed(2)}</p>
                   </div>
                   <div className="flex size-22 flex-col items-center justify-center rounded-full border-4 p-5">
                     <p className="font-bold">Points</p>
-                    <p className="font-bold">{gradePoints}</p>
+                    <p className="font-bold">{gradePoints.toFixed(2)}</p>
                   </div>
                   <div className="flex size-22 flex-col items-center justify-center rounded-full border-4 p-5">
                     <p className="font-bold">GPA</p>
@@ -195,6 +203,36 @@ export function CgpaCalculatorForm() {
       </CardContent>
       <CardFooter className="flex items-center justify-between gap-2">
         <Field orientation="horizontal">
+          <form.Subscribe
+            selector={({ values }) =>
+              [values.university, values.courses] as const
+            }
+          >
+            {(state) => {
+              const [university, courses] = state;
+              const universityName =
+                typeof university === "string" ? university : "";
+              const { credits, gradePoints } = calculate(courses);
+              const gpa = credits > 0 ? gradePoints / credits : 0;
+
+              return (
+                <AppButton asChild>
+                  <PDFDownloadLink
+                    document={
+                      <TranscriptDocument
+                        courses={courses}
+                        summary={{ credits, gradePoints, gpa }}
+                        university={universityName}
+                      />
+                    }
+                    fileName={`Transcript - ${universityName.toUpperCase() || "University"} - ${new Date().toLocaleString()}.pdf`}
+                  >
+                    Download transcript
+                  </PDFDownloadLink>
+                </AppButton>
+              );
+            }}
+          </form.Subscribe>
           <AppButton
             onClick={(e) => {
               e.preventDefault();
