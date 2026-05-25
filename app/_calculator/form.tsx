@@ -12,6 +12,7 @@ import { Trash2, X } from "lucide-react";
 import { useId } from "react";
 import {
   calculateCgpa,
+  getAllUniversitiesList,
   getGradesForUniversity,
 } from "@/app/_calculator/helper";
 import { cgpaCalculatorFormSchema } from "@/app/_calculator/schema";
@@ -44,6 +45,8 @@ export function CgpaCalculatorForm() {
     onSubmit: () => {},
   });
 
+  const allUniversities = getAllUniversitiesList();
+
   return (
     <Card className="w-full sm:max-w-2xl">
       <CardContent>
@@ -58,16 +61,7 @@ export function CgpaCalculatorForm() {
           <AppFieldGroup>
             <form.Field name="university">
               {(field) => (
-                <AppCombobox
-                  field={field}
-                  options={[
-                    {
-                      label:
-                        "International Islamic University, Islamabad (IIUI)",
-                      value: "iiui",
-                    },
-                  ]}
-                />
+                <AppCombobox field={field} options={allUniversities} />
               )}
             </form.Field>
           </AppFieldGroup>

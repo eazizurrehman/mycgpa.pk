@@ -33,6 +33,14 @@ export const calculateCgpa = (university: string, courses: Course[]) => {
   );
 };
 
+export const getAllUniversitiesKeys = () => {
+  return universities.map((u) => u.key);
+};
+
+export const getAllUniversitiesList = () => {
+  return universities.map((u) => ({ value: u.key, label: u.label }));
+};
+
 export const getGradesForUniversity = (university: string) => {
   const universityData = universities.find((u) => u.key === university);
 
