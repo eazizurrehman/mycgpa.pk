@@ -1,4 +1,4 @@
-import { CgpaCalculatorForm } from "@/app/_form";
+import { CgpaCalculatorForm } from "@/app/_calculator/form";
 
 export default function Home() {
   return (
