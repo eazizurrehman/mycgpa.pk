@@ -9,13 +9,14 @@ const PDFDownloadLink = dynamic(
 
 import { useForm } from "@tanstack/react-form-nextjs";
 import { Trash2, X } from "lucide-react";
+import { notFound } from "next/navigation";
 import { useId } from "react";
 import { cgpaCalculatorFormSchema } from "@/app/_calculator/schema";
 import { TranscriptDocument } from "@/app/_calculator/transcript";
 import {
   calculateCgpa,
-  getAllUniversitiesList,
   getGradesForUniversity,
+  getUniversity,
 } from "@/app/_calculator/utils";
 import { AppButton } from "@/app/_components/button";
 import { AppCombobox } from "@/app/_modules/form/combobox";
@@ -26,7 +27,7 @@ import { Card, CardContent, CardFooter } from "@/app/_shadcn/card";
 import { Field } from "@/app/_shadcn/field";
 import { getTranscriptTimestamp } from "@/lib/date";
 
-export function CgpaCalculatorForm() {
+export function CgpaCalculatorForm({ university }: { university: string }) {
   const formId = useId();
   const createCourse = () => ({
     id: globalThis.crypto?.randomUUID?.() ?? String(Date.now()),
@@ -37,7 +38,6 @@ export function CgpaCalculatorForm() {
 
   const form = useForm({
     defaultValues: {
-      university: "",
       courses: [createCourse()],
     },
     validators: {
@@ -46,7 +46,11 @@ export function CgpaCalculatorForm() {
     onSubmit: () => {},
   });
 
-  const allUniversities = getAllUniversitiesList();
+  const matchedUni = getUniversity(university);
+
+  if (!matchedUni) return notFound();
+
+  const uniGrades = getGradesForUniversity(university);
 
   return (
     <Card className="w-full sm:max-w-2xl">
@@ -59,96 +63,74 @@ export function CgpaCalculatorForm() {
             form.handleSubmit();
           }}
         >
-          <AppFieldGroup>
-            <form.Field name="university">
-              {(field) => (
-                <AppCombobox field={field} options={allUniversities} />
-              )}
-            </form.Field>
-          </AppFieldGroup>
-          <form.Subscribe
-            selector={({ values }) => [values.university] as const}
-          >
-            {(state) => {
-              const [university] = state;
-              const uniGrades = getGradesForUniversity(university);
-
-              return (
-                <form.Field mode="array" name="courses">
-                  {(field) => (
-                    <AppMultiField
-                      addLabel="Add course"
-                      field={field}
-                      label="Semester-wise Courses"
-                      maxItems={10}
-                      pushValue={() => field.pushValue(createCourse())}
+          <form.Field mode="array" name="courses">
+            {(field) => (
+              <AppMultiField
+                addLabel="Add course"
+                field={field}
+                label="Semester-wise Courses"
+                maxItems={10}
+                pushValue={() => field.pushValue(createCourse())}
+              >
+                {field.state.value.map((course, index) => (
+                  <AppFieldGroup
+                    className="flex gap-2"
+                    key={course.id}
+                    orientation="horizontal"
+                  >
+                    <p>{index + 1}.</p>
+                    <form.Field name={`courses[${index}].name`}>
+                      {(field) => (
+                        <AppInput
+                          field={field}
+                          hasLabel={false}
+                          placeholder="Name"
+                        />
+                      )}
+                    </form.Field>
+                    <form.Field name={`courses[${index}].credits`}>
+                      {(field) => (
+                        <AppCombobox
+                          field={field}
+                          hasLabel={false}
+                          label="Credits"
+                          options={["1", "2", "3", "4", "5", "6"]}
+                          placeholder="Credits"
+                        />
+                      )}
+                    </form.Field>
+                    <form.Field name={`courses[${index}].grade`}>
+                      {(field) => (
+                        <AppCombobox
+                          field={field}
+                          hasLabel={false}
+                          label="Grade"
+                          options={uniGrades}
+                          placeholder="Grade"
+                        />
+                      )}
+                    </form.Field>
+                    <AppButton
+                      aria-label="Remove course"
+                      disabled={field.state.value.length === 1}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        field.removeValue(index);
+                      }}
+                      size="icon-sm"
+                      type="button"
+                      variant="ghost"
                     >
-                      {field.state.value.map((course, index) => (
-                        <AppFieldGroup
-                          className="flex gap-2"
-                          key={course.id}
-                          orientation="horizontal"
-                        >
-                          <p>{index + 1}.</p>
-                          <form.Field name={`courses[${index}].name`}>
-                            {(field) => (
-                              <AppInput
-                                field={field}
-                                hasLabel={false}
-                                placeholder="Name"
-                              />
-                            )}
-                          </form.Field>
-                          <form.Field name={`courses[${index}].credits`}>
-                            {(field) => (
-                              <AppCombobox
-                                field={field}
-                                hasLabel={false}
-                                label="Credits"
-                                options={["1", "2", "3", "4", "5", "6"]}
-                                placeholder="Credits"
-                              />
-                            )}
-                          </form.Field>
-                          <form.Field name={`courses[${index}].grade`}>
-                            {(field) => (
-                              <AppCombobox
-                                field={field}
-                                hasLabel={false}
-                                label="Grade"
-                                options={uniGrades}
-                                placeholder="Grade"
-                              />
-                            )}
-                          </form.Field>
-                          <AppButton
-                            aria-label="Remove course"
-                            disabled={field.state.value.length === 1}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              field.removeValue(index);
-                            }}
-                            size="icon-sm"
-                            type="button"
-                            variant="ghost"
-                          >
-                            <Trash2 className="text-muted-foreground" />
-                          </AppButton>
-                        </AppFieldGroup>
-                      ))}
-                    </AppMultiField>
-                  )}
-                </form.Field>
-              );
-            }}
-          </form.Subscribe>
-          <form.Subscribe
-            selector={({ values }) =>
-              [values.university, values.courses] as const
-            }
-          >
+                      <Trash2 className="text-muted-foreground" />
+                    </AppButton>
+                  </AppFieldGroup>
+                ))}
+              </AppMultiField>
+            )}
+          </form.Field>
+          <form.Subscribe selector={({ values }) => [values.courses] as const}>
             {(state) => {
-              const [university, courses] = state;
+              const [courses] = state;
 
               const { credits, gradePoints } = calculateCgpa(
                 university,
@@ -179,17 +161,11 @@ export function CgpaCalculatorForm() {
       </CardContent>
       <CardFooter className="flex items-center justify-between gap-2">
         <Field orientation="horizontal">
-          <form.Subscribe
-            selector={({ values }) =>
-              [values.university, values.courses] as const
-            }
-          >
+          <form.Subscribe selector={({ values }) => [values.courses] as const}>
             {(state) => {
-              const [university, courses] = state;
-              const universityName =
-                typeof university === "string" ? university : "";
+              const [courses] = state;
               const { credits, gradePoints } = calculateCgpa(
-                universityName,
+                university,
                 courses,
               );
               const gpa = credits > 0 ? gradePoints / credits : 0;
@@ -201,10 +177,10 @@ export function CgpaCalculatorForm() {
                       <TranscriptDocument
                         courses={courses}
                         summary={{ credits, gradePoints, gpa }}
-                        university={universityName}
+                        university={matchedUni.label}
                       />
                     }
-                    fileName={`mycgpa.pk - Transcript for ${universityName || "Your University"} at ${getTranscriptTimestamp()}.pdf`}
+                    fileName={`mycgpa.pk - Transcript for ${matchedUni.label || "Your University"} at ${getTranscriptTimestamp()}.pdf`}
                   >
                     Download transcript
                   </PDFDownloadLink>

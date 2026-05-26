@@ -6,7 +6,7 @@ import type {
   TranscriptDocumentProps,
   UniversityGradeMapping,
 } from "@/app/_calculator/types";
-import { resolveUniversity } from "@/app/_calculator/utils";
+import { getUniversity } from "@/app/_calculator/utils";
 
 const formatNumber = (value: number, digits = 2) =>
   Number.isFinite(value) ? value.toFixed(digits) : "0.00";
@@ -47,7 +47,7 @@ export function TranscriptDocument({
   courses,
   summary,
 }: TranscriptDocumentProps) {
-  const universityData = resolveUniversity(university);
+  const universityData = getUniversity(university);
   const rows = normalizeCourses(courses, universityData?.mapping ?? []);
   const schoolName = university.trim() || "University";
 

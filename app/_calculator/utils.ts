@@ -1,27 +1,18 @@
-import type {
-  Course,
-  University,
-  UniversityWithLabel,
-  UniversityWithLabels,
-} from "@/app/_calculator/types";
+import type { Course } from "@/app/_calculator/types";
 import { universities } from "@/app/_calculator/universities";
 
-export const hasLabels = (u: University): u is UniversityWithLabels =>
-  "labels" in u;
-export const hasLabel = (u: University): u is UniversityWithLabel =>
-  "label" in u;
-
-export const resolveUniversity = (value: string) => {
+export const getUniversity = (value: string) => {
   return universities.find((u) => {
     if (u.key === value) return true;
-    if (hasLabel(u) && u.label === value) return true;
+    if (new Set(u.otherKeys).has(value)) return true;
+    if (u.label === value) return true;
 
-    return hasLabels(u) && u.labels.includes(value);
+    return false;
   });
 };
 
 export const calculateCgpa = (university: string, courses: Course[]) => {
-  const universityData = resolveUniversity(university);
+  const universityData = getUniversity(university);
 
   if (!universityData) return { credits: 0, gradePoints: 0 };
 
@@ -55,26 +46,17 @@ export const calculateCgpa = (university: string, courses: Course[]) => {
 export const getAllUniversitiesKeys = () => {
   return universities
     .flatMap((u) => {
-      if (hasLabels(u) && u.labels.length > 0) {
-        return [u.key, ...u.labels];
-      }
-
-      return [u.key, u.label];
+      return [u.key, u.label, ...(u.otherKeys ?? [])];
     })
     .filter((value): value is string => typeof value === "string");
 };
 
 export const getAllUniversitiesList = () => {
-  return universities.flatMap((u) => {
-    if (hasLabels(u) && u.labels.length > 0)
-      return u.labels.map((label) => ({ value: label, label }));
-
-    return hasLabel(u) ? [{ value: u.label, label: u.label }] : [];
-  });
+  return universities.map((u) => ({ value: u.label, label: u.label }));
 };
 
 export const getGradesForUniversity = (university: string) => {
-  const universityData = resolveUniversity(university);
+  const universityData = getUniversity(university);
 
   if (!universityData) return [];
 

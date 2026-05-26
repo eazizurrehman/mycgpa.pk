@@ -22,19 +22,9 @@ export type UniversityGradeMapping = {
   gradePoints: number;
 };
 
-type UniversityBase = {
+export type University = {
   key: string;
+  otherKeys?: string[];
+  label: string;
   mapping: UniversityGradeMapping[];
 };
-
-export type UniversityWithLabel = UniversityBase & {
-  label: string;
-  labels?: never;
-};
-
-export type UniversityWithLabels = UniversityBase & {
-  labels: string[];
-  label?: never;
-};
-
-export type University = UniversityWithLabel | UniversityWithLabels;
