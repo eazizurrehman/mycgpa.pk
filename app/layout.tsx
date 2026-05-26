@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "myCGPA.pk | Home",
+  title: "Home | myCGPA.pk",
   description: "Calculate your CGPA with ease using our myCGPA.pk.",
 };
 

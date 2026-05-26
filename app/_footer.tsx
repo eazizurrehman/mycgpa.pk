@@ -9,7 +9,7 @@ export function AppFooter() {
   return (
     <footer className="border-t border-dashed">
       <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-5 py-2 md:flex-row md:gap-5">
-        <AppLogo className="order-1 w-28" />
+        <AppLogo className="order-1" imageClassName="w-28" />
         <div className="order-3 flex 2xs:flex-row flex-col items-center gap-2 md:order-2">
           <p className="relative min-w-fit text-center text-muted-foreground text-sm">
             &#xa9;{" "}

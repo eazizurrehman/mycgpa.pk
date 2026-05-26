@@ -7,6 +7,7 @@ import { parseAsString, useQueryState } from "nuqs";
 import { useMemo } from "react";
 import { universities } from "@/app/_calculator/universities";
 import { AppButton } from "@/app/_components/button";
+import { Badge } from "@/app/_shadcn/badge";
 import { Card, CardContent } from "@/app/_shadcn/card";
 import { Input } from "@/app/_shadcn/input";
 
@@ -34,7 +35,9 @@ export default function Cards() {
         )
       : universities;
 
-    return [...base].sort((a, b) => a.label.localeCompare(b.label));
+    return [...base].sort((a, b) =>
+      a.label.localeCompare(b.label, "en", { sensitivity: "base" }),
+    );
   }, [query]);
 
   return (
@@ -48,24 +51,35 @@ export default function Cards() {
         <div className="grid gap-5 md:grid-cols-2">
           {filteredUniversities.map((item) => (
             <Card key={item.key}>
-              <CardContent className="flex items-center gap-2">
+              <CardContent className="flex h-full items-center gap-2">
                 <div className="flex h-full w-28 shrink-0 items-center justify-center bg-white p-1">
-                  <Image
-                    alt={item.label}
-                    className="size-25"
-                    height={100}
-                    src={item.logo}
-                    width={100}
-                  />
+                  {item.logo ? (
+                    <Image
+                      alt={item.label}
+                      className="h-full w-full object-contain"
+                      height={100}
+                      src={item.logo}
+                      width={100}
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <p className="font-bold text-2xl text-primary">
+                        {item.key.toUpperCase()}
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div className="flex w-full flex-col justify-between gap-1">
                   <h3 className="font-semibold">{item.label}</h3>
-                  <p className="flex items-center gap-2">
-                    <MapPinMinusInside width={16} />
-                    {Array.isArray(item.location)
-                      ? item.location.join(", ")
-                      : item.location}
-                  </p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="flex items-center gap-2">
+                      <MapPinMinusInside width={16} />
+                      {Array.isArray(item.location)
+                        ? item.location.join(", ")
+                        : item.location}
+                    </p>
+                    <Badge variant="outline">{item.type}</Badge>
+                  </div>
                   <a
                     className="group flex h-6 items-center gap-2"
                     href={item.website}
@@ -79,11 +93,13 @@ export default function Cards() {
                     />
                   </a>
                   <div className="flex w-full gap-2">
-                    <AppButton asChild className="flex-1">
-                      <Link href={`/${item.key}/cgpa-calculator`}>
-                        CGPA Calculator
-                      </Link>
-                    </AppButton>
+                    {item.mapping && item.mapping.length > 0 && (
+                      <AppButton asChild className="flex-1">
+                        <Link href={`/${item.key}/cgpa-calculator`}>
+                          CGPA Calculator
+                        </Link>
+                      </AppButton>
+                    )}
                   </div>
                 </div>
               </CardContent>
