@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import { AppFooter } from "@/app/_footer";
 import { AppHeader } from "@/app/_header";
@@ -43,7 +44,9 @@ export default function RootLayout({
         <main>
           <div className="mx-auto flex min-h-dvh flex-col">
             <AppHeader />
-            <div className="container mx-auto flex-1 p-5">{children}</div>
+            <div className="container mx-auto flex-1 p-5">
+              <NuqsAdapter>{children}</NuqsAdapter>
+            </div>
             <AppFooter />
           </div>
         </main>

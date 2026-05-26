@@ -27,7 +27,7 @@ export type University = {
   otherKeys?: string[];
   label: string;
   logo: string;
-  location: string;
+  location: string[] | string;
   website: string;
   mapping: UniversityGradeMapping[];
 };
