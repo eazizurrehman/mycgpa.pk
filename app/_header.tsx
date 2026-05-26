@@ -16,10 +16,10 @@ import { cn } from "@/lib/utils";
 export function AppHeader() {
   return (
     <header className="border-b border-dashed">
-      <div className="container mx-auto flex items-center justify-between gap-5 px-5 py-2">
+      <div className="container mx-auto flex items-center justify-between gap-5 px-5">
         <AppLogo tagline />
-        <NavigationMenu className="hidden md:block">
-          <NavigationMenuList>
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList className="space-x-1">
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.key}>
                 <NavigationMenuLink

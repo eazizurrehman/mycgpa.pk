@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "About | myCGPA.pk",
+  title: "About Us | myCGPA.pk",
   description:
     "myCGPA.pk is a free, privacy-first CGPA calculator built for students across Pakistani universities.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="max-w-2xl space-y-5 text-justify">
       <div className="space-y-2">
         <h1 className="font-semibold text-2xl tracking-tight">
           About myCGPA.pk

@@ -8,7 +8,7 @@ const CONTACT_EMAIL = "mycgpa@azizurrehman.com";
 
 export default function ContactUsPage() {
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="max-w-2xl space-y-5 text-justify">
       <div className="space-y-2">
         <h1 className="font-semibold text-2xl tracking-tight">Contact us</h1>
         <p className="text-muted-foreground leading-relaxed">

@@ -9,20 +9,18 @@ export function AppFooter() {
   return (
     <footer className="border-t border-dashed">
       <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-5 py-2 md:flex-row md:gap-5">
-        <div className="flex flex-col items-center gap-2 md:flex-row md:gap-5">
-          <AppLogo className="w-28" />
-          <div className="flex items-center gap-2">
-            <p className="relative min-w-fit text-center text-muted-foreground text-sm">
-              &#xa9;{" "}
-              <Suspense>
-                <CurrentYear />
-              </Suspense>
-              . All rights reserved.
-            </p>
-            <AppAttribution />
-          </div>
+        <AppLogo className="order-1 w-28" />
+        <div className="order-3 flex 2xs:flex-row flex-col items-center gap-2 md:order-2">
+          <p className="relative min-w-fit text-center text-muted-foreground text-sm">
+            &#xa9;{" "}
+            <Suspense>
+              <CurrentYear />
+            </Suspense>
+            . All rights reserved.
+          </p>
+          <AppAttribution />
         </div>
-        <div className="flex items-center gap-5">
+        <div className="order-2 flex 2xs:flex-row flex-col items-center 2xs:gap-5 gap-2 md:order-3">
           {footerMenu.map((item) => (
             <Link
               className="min-w-fit text-muted-foreground text-sm"

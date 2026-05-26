@@ -43,7 +43,7 @@ export default function RootLayout({
         <main>
           <div className="mx-auto flex min-h-dvh flex-col">
             <AppHeader />
-            <div className="container mx-auto flex-1 px-5">{children}</div>
+            <div className="container mx-auto flex-1 p-5">{children}</div>
             <AppFooter />
           </div>
         </main>

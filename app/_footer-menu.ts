@@ -2,7 +2,7 @@ export const footerMenu = [
   {
     key: "about",
     label: "About",
-    href: "/about",
+    href: "/about-us",
   },
   {
     key: "privacy-policy",
