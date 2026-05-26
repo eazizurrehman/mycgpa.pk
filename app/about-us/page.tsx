@@ -1,3 +1,5 @@
+import { Separator } from "@/app/_shadcn/separator";
+
 export const metadata = {
   title: "About Us | myCGPA.pk",
   description:
@@ -18,7 +20,7 @@ export default function AboutPage() {
           of them. myCGPA.pk was built to fix that.
         </p>
       </div>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">What it does</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -27,7 +29,7 @@ export default function AboutPage() {
           official grading policy. No sign-up, no account, no friction.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">Privacy by design</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -36,7 +38,7 @@ export default function AboutPage() {
           tab. We collect zero personal data — no grades, no name, nothing.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">Built for Pakistani students</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -52,7 +54,7 @@ export default function AboutPage() {
           and we will add it.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />{" "}
       <section className="space-y-1">
         <h2 className="font-medium text-base">Always free</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">

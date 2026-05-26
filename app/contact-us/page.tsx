@@ -1,3 +1,5 @@
+import { Separator } from "@/app/_shadcn/separator";
+
 export const metadata = {
   title: "Contact Us | myCGPA.pk",
   description:
@@ -16,7 +18,7 @@ export default function ContactUsPage() {
           university added? We would love to hear from you.
         </p>
       </div>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">Email</h2>
         <p className="text-muted-foreground text-sm">
@@ -30,7 +32,7 @@ export default function ContactUsPage() {
           . We typically respond within one to two business days.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">Report a grading issue</h2>
         <p className="text-muted-foreground text-sm">
@@ -39,7 +41,7 @@ export default function ContactUsPage() {
           in your email so we can verify and update it promptly.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-1">
         <h2 className="font-medium text-base">Request a university</h2>
         <p className="text-muted-foreground text-sm">

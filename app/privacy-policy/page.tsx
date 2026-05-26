@@ -1,3 +1,5 @@
+import { Separator } from "@/app/_shadcn/separator";
+
 export const metadata = {
   title: "Privacy Policy | myCGPA.pk",
   description:
@@ -24,7 +26,7 @@ export default function PrivacyPolicyPage() {
           and is never transmitted to any server.
         </p>
       </div>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">1. Information we collect</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -39,7 +41,7 @@ export default function PrivacyPolicyPage() {
           to track, identify, or remember you between sessions.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">2. How your data is used</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -48,7 +50,7 @@ export default function PrivacyPolicyPage() {
           accessible to us or any third party.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">3. Third-party advertising</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -94,7 +96,7 @@ export default function PrivacyPolicyPage() {
           .
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">4. Cookies</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -111,7 +113,7 @@ export default function PrivacyPolicyPage() {
           documentation.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">5. Analytics</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -123,7 +125,7 @@ export default function PrivacyPolicyPage() {
           any grade or academic data.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">6. Children's privacy</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -133,7 +135,7 @@ export default function PrivacyPolicyPage() {
           standpoint.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">7. Links to other websites</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -144,7 +146,7 @@ export default function PrivacyPolicyPage() {
           any external site you visit.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">8. Changes to this policy</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -154,7 +156,7 @@ export default function PrivacyPolicyPage() {
           however, we recommend reviewing this page periodically.
         </p>
       </section>
-
+      <Separator className="border-b border-dashed bg-transparent" />
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">9. Contact us</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
