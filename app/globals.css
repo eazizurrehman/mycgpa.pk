@@ -136,6 +136,27 @@
   a {
     @apply outline-none border-none;
   }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.723 0.014 214.4 / 30%) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: oklch(0.723 0.014 214.4 / 30%);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
 }
 
 @layer utilities {

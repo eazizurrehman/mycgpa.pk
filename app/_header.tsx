@@ -15,8 +15,8 @@ import { cn } from "@/lib/utils";
 
 export function AppHeader() {
   return (
-    <header className=" ">
-      <div className="container mx-auto flex items-center justify-between gap-5 border-b border-dashed px-5 py-2">
+    <header className="border-b border-dashed">
+      <div className="container mx-auto flex items-center justify-between gap-5 px-5 py-2">
         <AppLogo tagline />
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>

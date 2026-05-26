@@ -177,7 +177,7 @@ export const universities: University[] = [
       "paf-university",
       "paf-air-university",
     ],
-    label: "Air University Islamabad (AIR)",
+    label: "Air University Islamabad (AU)",
     logo: "/logos/air-university-islamabad-air.png",
     location: "Islamabad",
     website: "https://www.au.edu.pk/",
