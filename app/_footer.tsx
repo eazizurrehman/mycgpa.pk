@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { CurrentYear } from "@/app/_components/current-year";
 import { footerMenu } from "@/app/_footer-menu";
 import { Separator } from "@/app/_shadcn/separator";
@@ -9,10 +10,13 @@ export function AppFooter() {
       <div className="container mx-auto flex items-center justify-between gap-5 px-5 py-2">
         <Link href="/">mycgpa.pk</Link>
         <div className="flex gap-2">
-          <p className="text-center text-muted-foreground text-sm">
-            &#xa9;
-            <CurrentYear />{" "}
+          <p className="relative text-center text-muted-foreground text-sm">
+            &#xa9;{" "}
+            <Suspense>
+              <CurrentYear />
+            </Suspense>
             <Link className="underline-offset-4 hover:underline" href="/">
+              {" "}
               mycgpa.pk
             </Link>
           </p>

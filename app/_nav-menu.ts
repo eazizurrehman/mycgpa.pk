@@ -1,7 +1,7 @@
 export const navigationItems = [
   {
-    key: "home",
-    label: "Home",
+    key: "search",
+    label: "Search",
     href: "/",
   },
 ];
