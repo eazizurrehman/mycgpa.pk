@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { AppFooter } from "@/app/_footer";
+import { AppHeader } from "@/app/_header";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -29,7 +31,6 @@ export default function RootLayout({
     <html
       className={cn(
         "dark",
-        "h-full",
         "antialiased",
         geistSans.variable,
         geistMono.variable,
@@ -38,8 +39,14 @@ export default function RootLayout({
       )}
       lang="en"
     >
-      <body className="flex min-h-dvh flex-col">
-        <main className="min-h-dvh">{children}</main>
+      <body className="flex flex-col">
+        <main>
+          <div className="mx-auto flex min-h-dvh flex-col">
+            <AppHeader />
+            <div className="container mx-auto flex-1 px-5">{children}</div>
+            <AppFooter />
+          </div>
+        </main>
       </body>
     </html>
   );
