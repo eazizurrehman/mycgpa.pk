@@ -1,8 +1,7 @@
 "use client";
 
-import { Menu } from "lucide-react";
 import Link from "next/link";
-import { AppButton } from "@/app/_components/button";
+import { AppHeaderOverlayMenu } from "@/app/_header-overlay-menu";
 import { AppLogo } from "@/app/_logo";
 import { navigationItems } from "@/app/_nav-menu";
 import {
@@ -33,9 +32,7 @@ export function AppHeader() {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <AppButton>
-          <Menu className="block md:hidden" />
-        </AppButton>
+        <AppHeaderOverlayMenu />
       </div>
     </header>
   );

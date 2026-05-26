@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Contact Us | myCGPA.pk",
   description:
-    "Get in touch with the MyCGPA team for questions, feedback, or university support requests.",
+    "Get in touch with the myCGPA.pk team for questions, feedback, or university support requests.",
 };
 
 const CONTACT_EMAIL = "mycgpa@azizurrehman.com";

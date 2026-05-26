@@ -1,19 +1,21 @@
 export const metadata = {
-  title: "About – myCGPA.pk",
+  title: "About | myCGPA.pk",
   description:
-    "MyCGPA.pk is a free, privacy-first CGPA calculator built for students across Pakistani universities.",
+    "myCGPA.pk is a free, privacy-first CGPA calculator built for students across Pakistani universities.",
 };
 
 export default function AboutPage() {
   return (
     <div className="max-w-2xl space-y-6">
       <div className="space-y-2">
-        <h1 className="font-semibold text-2xl tracking-tight">About MyCGPA</h1>
+        <h1 className="font-semibold text-2xl tracking-tight">
+          About myCGPA.pk
+        </h1>
         <p className="text-muted-foreground leading-relaxed">
-          MyCGPA.pk is a free CGPA calculator built specifically for students at
+          myCGPA.pk is a free CGPA calculator built specifically for students at
           Pakistani universities. Every institution has its own grading scale,
           credit-hour system, and GPA formula — and no single tool handled all
-          of them. MyCGPA was built to fix that.
+          of them. myCGPA.pk was built to fix that.
         </p>
       </div>
 
@@ -38,7 +40,7 @@ export default function AboutPage() {
       <section className="space-y-1">
         <h2 className="font-medium text-base">Built for Pakistani students</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          From FAST and NUST to COMSATS, UET, and beyond, MyCGPA supports the
+          From FAST and NUST to COMSATS, UET, and beyond, myCGPA.pk supports the
           grading systems of universities across Pakistan. If your institution
           is not listed yet, you can{" "}
           <a
@@ -54,7 +56,7 @@ export default function AboutPage() {
       <section className="space-y-1">
         <h2 className="font-medium text-base">Always free</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          MyCGPA is and will remain free to use. The site is supported by
+          myCGPA.pk is and will remain free to use. The site is supported by
           non-intrusive ads that keep it running without any cost to you.
         </p>
       </section>

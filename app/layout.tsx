@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My CGPA Calculator",
-  description: "Calculate your CGPA with ease using our My CGPA Calculator.",
+  title: "myCGPA.pk | Home",
+  description: "Calculate your CGPA with ease using our myCGPA.pk.",
 };
 
 export default function RootLayout({

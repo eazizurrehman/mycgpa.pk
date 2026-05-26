@@ -190,7 +190,7 @@ export function CgpaCalculatorForm({ university }: { university: string }) {
                         university={matchedUni.label}
                       />
                     }
-                    fileName={`MyCGPA.pk - Transcript for ${matchedUni.label || "Your University"} at ${transcriptTimestamp}.pdf`}
+                    fileName={`myCGPA.pk - Transcript for ${matchedUni.label || "Your University"} at ${transcriptTimestamp}.pdf`}
                   >
                     Download transcript
                   </PDFDownloadLink>

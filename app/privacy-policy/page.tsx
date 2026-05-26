@@ -1,12 +1,11 @@
 export const metadata = {
   title: "Privacy Policy | myCGPA.pk",
   description:
-    "MyCGPA collects zero personal data. Everything stays in your browser. Learn how we handle your information.",
+    "myCGPA.pk collects zero personal data. Everything stays in your browser. Learn how we handle your information.",
 };
 
 const LAST_UPDATED = "May 26, 2025";
 const CONTACT_EMAIL = "mycgpa@azizurrehman.com";
-const SITE_URL = "https://mycgpa.pk";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -19,17 +18,10 @@ export default function PrivacyPolicyPage() {
           Last updated: {LAST_UPDATED}
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          MyCGPA (
-          <a
-            className="font-medium text-primary hover:underline"
-            href={SITE_URL}
-          >
-            mycgpa.pk
-          </a>
-          ) is built on a simple principle: your academic data belongs to you.
-          We collect <strong>zero bytes</strong> of personal information. Every
-          calculation happens entirely inside your browser and is never
-          transmitted to any server.
+          myCGPA.pk is built on a simple principle: your academic data belongs
+          to you. We collect <strong>zero bytes</strong> of personal
+          information. Every calculation happens entirely inside your browser
+          and is never transmitted to any server.
         </p>
       </div>
 
@@ -60,12 +52,12 @@ export default function PrivacyPolicyPage() {
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">3. Third-party advertising</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          MyCGPA uses <strong>Google AdSense</strong> to display advertisements.
-          Google, as a third-party vendor, uses cookies to serve ads based on
-          your prior visits to this site and other sites on the internet.
-          Google's use of advertising cookies enables it and its partners to
-          serve ads to you based on your visit to MyCGPA and/or other sites on
-          the internet.
+          myCGPA.pk uses <strong>Google AdSense</strong> to display
+          advertisements. Google, as a third-party vendor, uses cookies to serve
+          ads based on your prior visits to this site and other sites on the
+          internet. Google's use of advertising cookies enables it and its
+          partners to serve ads to you based on your visit to myCGPA.pk and/or
+          other sites on the internet.
         </p>
         <p className="text-muted-foreground text-sm leading-relaxed">
           You may opt out of personalised advertising by visiting{" "}
@@ -106,7 +98,7 @@ export default function PrivacyPolicyPage() {
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">4. Cookies</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          MyCGPA itself does not set any cookies. However, Google AdSense and
+          myCGPA.pk itself does not set any cookies. However, Google AdSense and
           other third-party services embedded on this site may set their own
           cookies on your device to serve relevant advertisements or measure ad
           performance. These cookies are governed by the respective third
@@ -135,7 +127,7 @@ export default function PrivacyPolicyPage() {
       <section className="space-y-2">
         <h2 className="font-semibold text-lg">6. Children's privacy</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          MyCGPA does not knowingly collect personal information from anyone,
+          myCGPA.pk does not knowingly collect personal information from anyone,
           including children under the age of 13. Because we collect no data at
           all, our service is safe for users of all ages from a data-privacy
           standpoint.

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { AppAttribution } from "@/app/_attribution";
 import { CurrentYear } from "@/app/_components/current-year";
 import { footerMenu } from "@/app/_footer-menu";
 import { AppLogo } from "@/app/_logo";
@@ -18,17 +19,7 @@ export function AppFooter() {
               </Suspense>
               . All rights reserved.
             </p>
-            <p className="min-w-fit text-muted-foreground text-sm">
-              By{" "}
-              <a
-                className="text-center underline-offset-4 hover:underline"
-                href="https://azizurrehman.com"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                azizurrehman.com
-              </a>
-            </p>
+            <AppAttribution />
           </div>
         </div>
         <div className="flex items-center gap-5">
