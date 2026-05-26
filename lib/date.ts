@@ -15,8 +15,8 @@ export function formatDateAndTime(date: Date | null | undefined) {
   }).format(new Date(date));
 }
 
-export function getTranscriptTimestamp() {
-  const value = new Date();
+export function getTranscriptTimestamp(date: Date) {
+  const value = date;
 
   const day = value.getDate();
   const month = value.getMonth() + 1;

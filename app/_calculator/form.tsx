@@ -10,7 +10,7 @@ const PDFDownloadLink = dynamic(
 import { useForm } from "@tanstack/react-form-nextjs";
 import { Trash2, X } from "lucide-react";
 import { notFound } from "next/navigation";
-import { useId } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { cgpaCalculatorFormSchema } from "@/app/_calculator/schema";
 import { TranscriptDocument } from "@/app/_calculator/transcript";
 import {
@@ -29,8 +29,18 @@ import { getTranscriptTimestamp } from "@/lib/date";
 
 export function CgpaCalculatorForm({ university }: { university: string }) {
   const formId = useId();
+
+  const [transcriptTimestamp, setTranscriptTimestamp] = useState("");
+
+  useEffect(() => {
+    setTranscriptTimestamp(getTranscriptTimestamp(new Date()));
+  }, []);
+
+  const courseIdSeed = useId();
+  const courseIdCounter = useRef(0);
+
   const createCourse = () => ({
-    id: globalThis.crypto?.randomUUID?.() ?? String(Date.now()),
+    id: `${courseIdSeed}-${courseIdCounter.current++}`,
     name: "",
     credits: "",
     grade: "",
@@ -180,7 +190,7 @@ export function CgpaCalculatorForm({ university }: { university: string }) {
                         university={matchedUni.label}
                       />
                     }
-                    fileName={`mycgpa.pk - Transcript for ${matchedUni.label || "Your University"} at ${getTranscriptTimestamp()}.pdf`}
+                    fileName={`mycgpa.pk - Transcript for ${matchedUni.label || "Your University"} at ${transcriptTimestamp}.pdf`}
                   >
                     Download transcript
                   </PDFDownloadLink>
