@@ -41,7 +41,7 @@ export default async function CalculatorPage({
   if (!matched || !allowed.has(calculator)) return notFound();
 
   return (
-    <div className="flex min-h-dvh w-full items-center justify-center p-5">
+    <div className="flex w-full items-center justify-center">
       <CgpaCalculatorForm university={university} />
     </div>
   );

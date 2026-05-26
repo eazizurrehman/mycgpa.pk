@@ -2,6 +2,7 @@
 
 import { MapPinMinusInside, SquareArrowOutUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { universities } from "@/app/_calculator/universities";
 import { AppButton } from "@/app/_components/button";
@@ -74,8 +75,11 @@ export default function Home() {
                   />
                 </a>
                 <div className="flex w-full gap-2">
-                  <AppButton className="flex-1">Profile</AppButton>
-                  <AppButton className="flex-1">CGPA Calculator</AppButton>
+                  <AppButton asChild className="flex-1">
+                    <Link href={`/${item.key}/cgpa-calculator`}>
+                      CGPA Calculator
+                    </Link>
+                  </AppButton>
                 </div>
               </div>
             </CardContent>

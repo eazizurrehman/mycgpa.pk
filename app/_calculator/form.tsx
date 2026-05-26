@@ -63,7 +63,7 @@ export function CgpaCalculatorForm({ university }: { university: string }) {
   const uniGrades = getGradesForUniversity(university);
 
   return (
-    <Card className="w-full sm:max-w-2xl">
+    <Card className="w-full">
       <CardContent>
         <form
           className="space-y-2"
@@ -190,7 +190,7 @@ export function CgpaCalculatorForm({ university }: { university: string }) {
                         university={matchedUni.label}
                       />
                     }
-                    fileName={`mycgpa.pk - Transcript for ${matchedUni.label || "Your University"} at ${transcriptTimestamp}.pdf`}
+                    fileName={`MyCGPA.pk - Transcript for ${matchedUni.label || "Your University"} at ${transcriptTimestamp}.pdf`}
                   >
                     Download transcript
                   </PDFDownloadLink>

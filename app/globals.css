@@ -127,6 +127,9 @@
   html {
     @apply font-sans;
   }
+  a {
+    @apply outline-none border-none;
+  }
 }
 
 @layer utilities {

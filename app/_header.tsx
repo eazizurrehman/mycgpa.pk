@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AppLogo } from "@/app/_logo";
 import { navigationItems } from "@/app/_nav-menu";
 import {
   NavigationMenu,
@@ -15,9 +16,7 @@ export function AppHeader() {
   return (
     <header className=" ">
       <div className="container mx-auto flex items-center justify-between gap-5 px-5 py-2">
-        <Link className="font-bold text-lg" href="/">
-          mycgpa.pk
-        </Link>
+        <AppLogo tagline />
         <NavigationMenu>
           <NavigationMenuList>
             {navigationItems.map((item) => (
