@@ -1,6 +1,6 @@
 import type { University } from "@/app/_calculator/types";
 
-export const universities = [
+export const universities: University[] = [
   {
     key: "iiui",
     label: "International Islamic University Islamabad (IIUI)",
@@ -17,16 +17,7 @@ export const universities = [
   },
   {
     key: "comsats",
-    labels: [
-      "COMSATS University Islamabad (CUI), Islamabad Campus",
-      "COMSATS University Islamabad (CUI), Lahore Campus",
-      "COMSATS University Islamabad (CUI), Abbottabad Campus",
-      "COMSATS University Islamabad (CUI), Wah Campus",
-      "COMSATS University Islamabad (CUI), Attock Campus",
-      "COMSATS University Islamabad (CUI), Sahiwal Campus",
-      "COMSATS University Islamabad (CUI), Vehari Campus",
-      "COMSATS University Islamabad (CUI), Virtual Campus",
-    ],
+    label: "COMSATS University Islamabad (CUI)",
     mapping: [
       { grade: "A", gradePoints: 4.0 },
       { grade: "A-", gradePoints: 3.66 },
@@ -41,4 +32,19 @@ export const universities = [
       { grade: "F", gradePoints: 0.0 },
     ],
   },
-] satisfies University[];
+  {
+    key: "qau",
+    label: "Quaid-i-Azam University Islamabad (QAU)",
+    mapping: [
+      { grade: "A", gradePoints: 4.0 },
+      { grade: "A-", gradePoints: 3.8 },
+      { grade: "B+", gradePoints: 3.5 },
+      { grade: "B", gradePoints: 3.0 },
+      { grade: "B-", gradePoints: 2.8 },
+      { grade: "C+", gradePoints: 2.5 },
+      { grade: "C", gradePoints: 2.0 },
+      { grade: "D", gradePoints: 1.0 },
+      { grade: "F", gradePoints: 0.0 },
+    ],
+  },
+];

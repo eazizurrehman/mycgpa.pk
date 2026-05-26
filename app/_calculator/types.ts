@@ -5,6 +5,18 @@ export type Course = {
   grade: string;
 };
 
+export type TranscriptSummary = {
+  credits: number;
+  gradePoints: number;
+  gpa: number;
+};
+
+export type TranscriptDocumentProps = {
+  university: string;
+  courses: Course[];
+  summary: TranscriptSummary;
+};
+
 export type UniversityGradeMapping = {
   grade: string;
   gradePoints: number;

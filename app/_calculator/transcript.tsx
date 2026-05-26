@@ -1,48 +1,34 @@
 "use client";
 
 import { Document, Page, Text, View } from "@react-pdf/renderer";
-
-const GRADE_TO_POINTS: Record<string, number> = {
-  A: 4.0,
-  "B+": 3.5,
-  B: 3.0,
-  "C+": 2.5,
-  C: 2.0,
-  "D+": 1.5,
-  D: 1.0,
-  F: 0.0,
-};
-
-type Course = {
-  id: string;
-  name: string;
-  credits: string;
-  grade: string;
-};
-
-type TranscriptSummary = {
-  credits: number;
-  gradePoints: number;
-  gpa: number;
-};
-
-type TranscriptDocumentProps = {
-  university: string;
-  courses: Course[];
-  summary: TranscriptSummary;
-};
+import type {
+  Course,
+  TranscriptDocumentProps,
+  UniversityGradeMapping,
+} from "@/app/_calculator/types";
+import { resolveUniversity } from "@/app/_calculator/utils";
 
 const formatNumber = (value: number, digits = 2) =>
   Number.isFinite(value) ? value.toFixed(digits) : "0.00";
 
-const normalizeCourses = (courses: Course[]) =>
+const normalizeCourses = (
+  courses: Course[],
+  mapping: UniversityGradeMapping[],
+) =>
   courses
     .map((course) => {
       const credits = Number(course.credits);
-      const gradePoint = GRADE_TO_POINTS[course.grade];
+      const gradePoint = mapping.find(
+        (gradeMapping) => gradeMapping.grade === course.grade,
+      )?.gradePoints;
       const name = course.name.trim();
 
-      if (!name || !Number.isFinite(credits) || !Number.isFinite(gradePoint)) {
+      if (
+        !name ||
+        !Number.isFinite(credits) ||
+        typeof gradePoint !== "number" ||
+        !Number.isFinite(gradePoint)
+      ) {
         return null;
       }
 
@@ -61,7 +47,8 @@ export function TranscriptDocument({
   courses,
   summary,
 }: TranscriptDocumentProps) {
-  const rows = normalizeCourses(courses);
+  const universityData = resolveUniversity(university);
+  const rows = normalizeCourses(courses, universityData?.mapping ?? []);
   const schoolName = university.trim() || "University";
 
   return (

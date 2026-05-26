@@ -6,10 +6,12 @@ import type {
 } from "@/app/_calculator/types";
 import { universities } from "@/app/_calculator/universities";
 
-const hasLabels = (u: University): u is UniversityWithLabels => "labels" in u;
-const hasLabel = (u: University): u is UniversityWithLabel => "label" in u;
+export const hasLabels = (u: University): u is UniversityWithLabels =>
+  "labels" in u;
+export const hasLabel = (u: University): u is UniversityWithLabel =>
+  "label" in u;
 
-const resolveUniversity = (value: string) => {
+export const resolveUniversity = (value: string) => {
   return universities.find((u) => {
     if (u.key === value) return true;
     if (hasLabel(u) && u.label === value) return true;
