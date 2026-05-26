@@ -10,7 +10,7 @@ export const AppLogo = ({
   className?: string;
 }) => {
   return (
-    <Link className={cn("font-bold text-lg", className)} href="/">
+    <Link className={cn("shrink-0 font-bold text-lg", className)} href="/">
       {tagline ? (
         <Image
           alt="logo"

@@ -37,16 +37,16 @@ export default function Home() {
   }, [query]);
 
   return (
-    <div className="h-full min-h-full space-y-5">
+    <div className="h-full min-h-full space-y-5 py-5">
       <Input
         onChange={(event) => setQuery(event.target.value)}
         placeholder="Search for university..."
         value={query}
       />
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid gap-5 md:grid-cols-2">
         {filteredUniversities.map((item) => (
           <Card key={item.key}>
-            <CardContent className="flex gap-2">
+            <CardContent className="flex items-center gap-2">
               <div className="flex size-28 shrink-0 items-center justify-center bg-white p-1">
                 <Image
                   alt={item.label}

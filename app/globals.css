@@ -4,6 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-3xs: 20rem;
+  --breakpoint-2xs: 24rem;
+  --breakpoint-xs: 30rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -135,5 +141,8 @@
 @layer utilities {
   .container {
     @apply max-w-5xl;
+  }
+  .bp {
+    @apply dark:bg-zinc-900 3xs:dark:bg-rose-900 2xs:dark:bg-orange-900 xs:dark:bg-amber-900 sm:dark:bg-lime-900 md:dark:bg-emerald-900 lg:dark:bg-teal-900 xl:dark:bg-cyan-900 2xl:dark:bg-sky-900;
   }
 }

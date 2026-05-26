@@ -1,6 +1,8 @@
 "use client";
 
+import { Menu } from "lucide-react";
 import Link from "next/link";
+import { AppButton } from "@/app/_components/button";
 import { AppLogo } from "@/app/_logo";
 import { navigationItems } from "@/app/_nav-menu";
 import {
@@ -15,9 +17,9 @@ import { cn } from "@/lib/utils";
 export function AppHeader() {
   return (
     <header className=" ">
-      <div className="container mx-auto flex items-center justify-between gap-5 px-5 py-2">
+      <div className="container mx-auto flex items-center justify-between gap-5 border-b border-dashed px-5 py-2">
         <AppLogo tagline />
-        <NavigationMenu>
+        <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.key}>
@@ -31,6 +33,9 @@ export function AppHeader() {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+        <AppButton>
+          <Menu className="block md:hidden" />
+        </AppButton>
       </div>
     </header>
   );
